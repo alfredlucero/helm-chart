@@ -1,7 +1,11 @@
 # For Kubernetes, ConfigMap is an object for storing configuration data
 # This will run through the templating engine and be passed to Kubernetes
+# Install templates to Kubernetes
 # helm install full-coral ./mychart
+# Takes a release name like full-coral and prints out all the Kubernetes resources that were uploaded to the server
 # helm get manifest full-coral
+# Uninstall release like
+# helm uninstall full-coral
 apiVersion: v1
 kind: ConfigMap
 metadata:
