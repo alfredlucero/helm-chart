@@ -18,3 +18,7 @@ metadata:
   name: {{ .Release.Name }}-configmap
 data:
   myvalue: "Hello World"
+  # From values.yml
+  # helm install geared-marsupi ./mychart --dry-run --debug
+  drink: {{ .Values.favorite.drink }}
+  food: {{ .Values.favorite.food }}
