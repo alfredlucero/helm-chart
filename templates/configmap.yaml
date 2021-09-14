@@ -6,9 +6,15 @@
 # helm get manifest full-coral
 # Uninstall release like
 # helm uninstall full-coral
+# Important: to test the template rendering but not install anything
+# helm install --debug --dry-run goodly-guppy ./mychart
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mychart-configmap
+  # Template directive injects the release name into the template
+  # dot separates each namespaced element
+  # helm install clunky-serval ./mychart
+  # helm get manifest clunky-serval
+  name: {{ .Release.Name }}-configmap
 data:
   myvalue: "Hello World"
