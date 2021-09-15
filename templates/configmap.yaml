@@ -20,5 +20,16 @@ data:
   myvalue: "Hello World"
   # From values.yml
   # helm install geared-marsupi ./mychart --dry-run --debug
-  drink: {{ .Values.favorite.drink }}
-  food: {{ .Values.favorite.food }}
+  # Go templating + funcs, pipelines similar to unix
+  # default good for computed values that can't go inside values.yml defaults
+  drink: {{ .Values.favorite.drink | default "tea" | upper | quote }}
+  food: {{ .Values.favorite.food | repeat 5 | quote }}
+  {{- if eq .Values.favorite.drink "coffee" }}
+  mug: "true"
+  {{- end }}
+  release: {{ .Release.Name }}
+  toppings: |-
+    {{- range .Values.pizzaToppings }}
+    - {{ . | title | quote }}
+    {{- end }}
+
