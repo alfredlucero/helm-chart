@@ -16,6 +16,8 @@ metadata:
   # helm install clunky-serval ./mychart
   # helm get manifest clunky-serval
   name: {{ .Release.Name }}-configmap
+  # Subtemplate and passing in scope for access to .Chart things
+  {{- template "mychart.labels" . }}
 data:
   myvalue: "Hello World"
   # From values.yml
