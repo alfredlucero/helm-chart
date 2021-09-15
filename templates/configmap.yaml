@@ -34,4 +34,5 @@ data:
     {{- range .Values.pizzaToppings }}
     - {{ . | title | quote }}
     {{- end }}
+  salad: {{ .Values.global.salad }}
 

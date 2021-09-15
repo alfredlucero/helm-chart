@@ -6,3 +6,13 @@ pizzaToppings:
   - cheese
   - peppers
   - onions
+
+# From parent perspective, any directives inside mysubchart will be sent into mysubchart
+# helm install --dry-run --debug mychart
+# As the template engine passes values along, it sets the scope. So for the mysubchart templates, only values specifically for mysubchart will be available in .Values
+mysubchart:
+  dessert: ice cream
+
+# Global values .Values.global accessed from any chart
+global:
+  salad: caesar

@@ -1,0 +1,9 @@
+# Subchart are considered stand-alone so we can do this
+# helm install --generate-name --dry-run --debug mychart/charts/mysubchart
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-cfgmap2
+data:
+  dessert: {{ .Values.dessert }}
+  salad: {{ .Values.global.salad }}
